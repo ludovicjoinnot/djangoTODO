@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+Tasks -
+{% endblock title %}
+{% block content %}
+    <h2>DÃ©tails de tÃ¢che</h2>
+    <form action = "" method = "GET">
+    {% csrf_token %}
+        <label for="id">ID du Todo :  </label>
+        <input id="id" type="text" name="id">
+        <button type="submit">DÃ©tails</button>
+        {% for el in attributs %}
+            <label>{{ el.id }}</label> : {{ el.title }} <input type="checkbox" name="task_check" {% if el.completed %} checked {% endif %} >
+            <br/>
+        {% endfor %}
+    </form>
+
+    <form action = "" method = "PUT">
+        {% for el in modifications %}
+            <label>{{ el.id }}</label> : {{ el.title }} <input type="checkbox" name="task_check"{% if el.completed %} checked {% endif %} >
+            <br/>
+        {% endfor %}
+        <button type="submit">Mettre Ã  jour</button>
+    </form>
+    <hr/>
+    <h2>CrÃ©ation de tÃ¢che</h2>
+    <form action = "" method = "POST">
+    {% csrf_token %}
+        <label for="title">Todo :  </label>
+        <input id="title" type="text" name="title">
+        <label for="cb">TÃ¢che effectuÃ©e </label>
+        <input id="cb" type="checkbox" name="cb">
+        <button type="submit">CrÃ©er</button>
+    </form>
+    <hr/>
+    <h2>Lister les tÃ¢ches</h2>
+    {% for el in lecture %}
+        <label>{{ el.id }}</label> : {{ el.title }}
+        <br/>
+    {% endfor %}
+{% endblock content %}
