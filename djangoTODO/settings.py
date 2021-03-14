@@ -25,7 +25,7 @@ SECRET_KEY = '_*ciz-146*0rmko=q4egc@54d2!a^nzp^hz_fs*gsy$kqbz)xr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-18-195-1-196.eu-central-1.compute.amazonaws.com', '0.0.0.0']
+ALLOWED_HOSTS = ['3.123.27.226', '0.0.0.0']
 
 
 # Application definition
@@ -78,12 +78,7 @@ WSGI_APPLICATION = 'djangoTODO.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': "myRDS",
-        'USER': "root",
-        'PASSWORD': 'Cartesoft_1',
-        'HOST': 'dba.clhjln4zga20.eu-central-1.rds.amazonaws.com',
-        'PORT': '3306'
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
     }
 }
 
