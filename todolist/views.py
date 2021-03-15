@@ -47,18 +47,18 @@ def index(request):
 
 def update_task(request, pk):
     #Récup le todo
-    task = requests.get('https://jsonplaceholder.typicode.com/todos/'+str(pk))
+    task = requests.get('https://aoxk66tn58.execute-api.eu-central-1.amazonaws.com/todos/todos/'+str(pk))
     print("GET1: "+str(task.json()))
     context = {'task': task.json()}
     if request.method == "POST":
-        r =requests.put('https://jsonplaceholder.typicode.com/todos/', params=request.POST)
+        r =requests.put('https://aoxk66tn58.execute-api.eu-central-1.amazonaws.com/todos/todos/', params=request.POST)
         print("PUT: "+str(r.json()))
         return redirect("index")
     return render(request, "update_task.html", context=context) #, {"task_edit_form": r}
 
 
 def delete_task(request, pk):
-    task = requests.delete('https://jsonplaceholder.typicode.com/todos/'+str(pk))
+    task = requests.delete('https://aoxk66tn58.execute-api.eu-central-1.amazonaws.com/todos/todos/'+str(pk))
     print("DELETE: "+str(task.json()))
     return redirect("index")
 
